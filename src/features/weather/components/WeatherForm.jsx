@@ -15,10 +15,10 @@ const WeatherForm = ({ cityName, setCity, searchForecast, deleteList }) => {
                 placeholder={'Název obce'}
             />
             <div className={'w-100 d-flex justify-content-between'}>
-                <Button color={'warning'} className={'my-3 font-bold'}>
+                <Button color={'warning'} className={'my-3 font-bold search'} onClick={searchForecast}>
                     Zjistit, jak bude
                 </Button>
-                <Button color={'danger'} className={'my-3'}>
+                <Button color={'danger'} className={'my-3'} onClick={deleteList}>
                     Smazat vše
                 </Button>
             </div>

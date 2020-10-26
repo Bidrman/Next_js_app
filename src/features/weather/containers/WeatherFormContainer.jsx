@@ -4,22 +4,36 @@ import React, { useState, useEffect, useCallback } from 'react'
 //import useForm from '../hooks/useForm'
 //import * as types from '../../../../redux/types'
 
+import useManageCities from '../hooks/useManageCities'
 import WeatherForm from '../components/WeatherForm'
 
 const WeatherFormContainer = () => {
     //const dispatch = useDispatch()
     const [isSearching, setSearching] = useState(false)
     const [city, setCityName] = useState('')
-    const [cities, setCities] = useState(null)
+    const [cities, setCities] = useManageCities([])
 
     //const cityName = useSelector((state) => state.weather.cityName)
     //const addCity = dispatch({ type: types.ADD_CITY })
 
     const searchCity = useCallback(() => {
-        if (setSearching) return
+        if (isSearching) return
+        // zamezeni volani kdyz probiha fetch
+        setSearching(true)
+        console.log('searching je ', isSearching)
 
         try {
-            const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
+            // const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
+
+            const fakeData = {
+                city: 'Oklahoma',
+                weather: 'Ma byt krasne',
+            }
+
+            setCities(fakeData)
+            console.log('RR', typeof cities, cities)
+
+            setSearching(false)
         } catch (error) {
             alert(error)
         }

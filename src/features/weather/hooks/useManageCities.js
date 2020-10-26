@@ -6,16 +6,14 @@ const useManageCities = (initialValues) => {
     return [
         cities,
         (data) => {
-            setCities({
-                cities: [
-                    ...cities,
-                    {
-                        //musi se jeste presneji upresnit podle struktury
-                        cityName: data.city,
-                        forecast: data.weather,
-                    },
-                ],
-            })
+            setCities([
+                ...cities,
+                {
+                    //musi se jeste presneji upresnit podle struktury
+                    cityName: data.city,
+                    forecast: data.weather,
+                },
+            ])
         },
     ]
 
