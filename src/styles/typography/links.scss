@@ -1,0 +1,31 @@
+.link {
+    position: relative;
+    text-decoration: none;
+    display: block;
+    color: $white;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 8px;
+    margin-bottom: 8px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        height: 2px;
+        background: $green;
+        width: 0;
+        transition: all 190ms ease-in-out;
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: $white;
+
+        &::before {
+            left: 0;
+            width: 100%;
+        }
+    }
+}

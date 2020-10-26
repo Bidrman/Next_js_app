@@ -1,0 +1,35 @@
+@import '~bootstrap/scss/functions';
+
+//backgrounds
+$green: #9c3;
+$white: #ffffff;
+$black: #000000;
+
+//fonts
+$grey: #41454b;
+
+// breakpoints
+
+$grid-breakpoints: (
+    xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 980px,
+    xl: 1199px,
+) !default;
+
+@include _assert-ascending($grid-breakpoints, '$grid-breakpoints');
+@include _assert-starts-at-zero($grid-breakpoints, '$grid-breakpoints');
+
+// Grid containers
+//
+// Define the maximum width of `.container` for different screen sizes.
+
+$container-max-widths: (
+    sm: 540px,
+    md: 760px,
+    lg: 980px,
+    xl: 1232px,
+) !default;
+
+@include _assert-ascending($container-max-widths, '$container-max-widths');

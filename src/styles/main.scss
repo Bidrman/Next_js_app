@@ -1,0 +1,73 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: $grey;
+}
+
+header {
+    background: $black;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    cursor: pointer;
+    font-weight: 400;
+}
+
+// breakpoints adjustment //
+
+// custom classes //
+
+.bg-gray {
+    background: #f2f2f2;
+}
+
+.bg-green {
+    background: $green;
+}
+
+.rounded {
+    border-radius: 6px !important;
+}
+
+.font-12 {
+    font-size: 12px !important;
+}
+
+.font-15 {
+    font-size: 15px !important;
+}
+
+.font-22 {
+    font-size: 22px !important;
+}
+
+.font-bold {
+    font-weight: 500 !important;
+}
+
+.font-bolder {
+    font-weight: 600 !important;
+}
+
+.text-black {
+    color: $black;
+}
+
+@include media-breakpoint-down(md) {
+    body {
+        text-align: center;
+    }
+
+    .ghost {
+        display: none;
+    }
+}
