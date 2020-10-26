@@ -41,6 +41,18 @@ const WeatherFormContainer = () => {
 
     const deleteCities = () => {}
 
+    const display = () => {
+        cities.map((city) => {
+            console.log('CC', city)
+            return (
+                <div>
+                    <h3>{city.name}</h3>
+                    <p>{city.weather}</p>
+                </div>
+            )
+        })
+    }
+
     return (
         <WeatherForm
             cityName={city}
@@ -49,6 +61,7 @@ const WeatherFormContainer = () => {
             }}
             searchForecast={searchCity}
             deleteList={deleteCities}
+            display={display}
         />
     )
 }

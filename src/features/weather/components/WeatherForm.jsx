@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from 'reactstrap'
 
-const WeatherForm = ({ cityName, setCity, searchForecast, deleteList }) => {
+const WeatherForm = ({ cityName, setCity, searchForecast, deleteList, display }) => {
     console.log('prislo', cityName, setCity)
 
     return (
@@ -22,6 +22,7 @@ const WeatherForm = ({ cityName, setCity, searchForecast, deleteList }) => {
                     Smazat vše
                 </Button>
             </div>
+            {display}
         </div>
     )
 }

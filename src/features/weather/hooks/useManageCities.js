@@ -6,6 +6,7 @@ const useManageCities = (initialValues) => {
     return [
         cities,
         (data) => {
+            console.log('data'.data)
             setCities([
                 ...cities,
                 {
