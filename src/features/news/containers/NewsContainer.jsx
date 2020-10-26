@@ -13,7 +13,7 @@ const NewsContainer = () => {
         if (isSending) return
 
         setSending(true)
-
+        console.log('Sending ', isSending)
         try {
             console.log('query', phrase)
             const url = `https://api.giphy.com/v1/gifs/search?api_key=bgfNW52aHgpd6yoJVG5HIqbIiRRlplZX&q=${phrase}&limit=26&offset=0&rating=g&lang=en`

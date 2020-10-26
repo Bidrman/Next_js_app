@@ -16,7 +16,7 @@ const WeatherFormContainer = () => {
     //const cityName = useSelector((state) => state.weather.cityName)
     //const addCity = dispatch({ type: types.ADD_CITY })
 
-    const searchCity = useCallback(() => {
+    const searchCity = useCallback(async () => {
         if (isSearching) return
         // zamezeni volani kdyz probiha fetch
         setSearching(true)
