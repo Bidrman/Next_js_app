@@ -10,23 +10,13 @@ const useManageCities = (initialValues) => {
             setCities([
                 ...cities,
                 {
-                    //musi se jeste presneji upresnit podle struktury
-                    cityName: data.city,
-                    forecast: data.weather,
+                    name: data.city.name,
+                    date: new Date(),
+                    forecast: data.list.filter((litItem, index) => index <= 3),
                 },
             ])
         },
     ]
-
-    // return [
-    //     values,
-    //     (e) => {
-    //         setValues({
-    //             ...values,
-    //             [e.target.name]: e.target.value,
-    //         })
-    //     },
-    // ]
 }
 
 export default useManageCities

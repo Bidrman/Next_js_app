@@ -1,7 +1,7 @@
 import React from 'react'
 
-const ForecastList = () => {
-    return <h3>ForecastList</h3>
+const ForecastList = ({ forecastItems }) => {
+    return <ul>{forecastItems}</ul>
 }
 
 export default ForecastList

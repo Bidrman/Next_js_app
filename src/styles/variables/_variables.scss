@@ -8,6 +8,63 @@ $black: #000000;
 //fonts
 $grey: #41454b;
 
+//Colors & Themes
+$blue: #297ad1 !default;
+$indigo: #2d0eb8 !default;
+$purple: #6f42c1 !default;
+$pink: #e63b8a !default;
+$red: #e91638 !default;
+$red2: #f52837 !default;
+$orange: #e74c1d !default;
+$yellow: #f3e848 !default;
+$green: #9c3 !default;
+$blackSqueeze: #dadcdd !default;
+$blueGray: #627486 !default;
+
+$colors: () !default;
+$colors: map-merge(
+    (
+        'blue': $blue,
+        'indigo': $indigo,
+        'purple': $purple,
+        'pink': $pink,
+        'red': $red,
+        'orange': $orange,
+        'yellow': $yellow,
+        'green': $green,
+        'blue-gray': $blueGray,
+        'white': $white,
+        'gray': #cbd0d6,
+        'gray-dark': $grey,
+    ),
+    $colors
+);
+
+// urcit barevnostni paletu
+$primary: $orange !default;
+$secondary: #7f3037 !default;
+$success: $green !default;
+$info: $purple !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $blackSqueeze !default;
+$dark: #d3d9dc !default;
+$theme-colors: () !default;
+$theme-colors: map-merge(
+    (
+        'primary': $primary,
+        'secondary': $secondary,
+        'success': $success,
+        'info': $info,
+        'warning': $warning,
+        'danger': $danger,
+        'light': $light,
+        'dark': $dark,
+    ),
+    $theme-colors
+);
+$theme-colors: map-merge($theme-colors, $colors);
+
 // breakpoints
 
 $grid-breakpoints: (

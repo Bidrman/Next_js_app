@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
-import {Button} from 'reactstrap'
+import { Button } from 'reactstrap'
 import { useSession, signout } from 'next-auth/client'
 import Link from 'next/link'
 
@@ -16,13 +16,13 @@ const menuItems = [
         url: '/news',
     },
     {
-        label: 'Pokus',
-        url: '/pokus',
+        label: 'Gif search',
+        url: '/gifs',
     },
-    {
-        label: 'Login',
-        url: '/login',
-    },
+    // {
+    //     label: 'Login',
+    //     url: '/login',
+    // },
 ]
 
 const Navigation = ({ type }) => {
@@ -44,9 +44,9 @@ const Navigation = ({ type }) => {
                 <ul className='navbar-nav'>
                     {menuItems.map((item, index) => {
                         return (
-                            <li key={index} className={'nav-item mx-2'}>
+                            <li key={index} className={'nav-item mx-3'}>
                                 <Link href={item.url}>
-                                    <a>{item.label}</a>
+                                    <a className={'font-17'}>{item.label}</a>
                                 </Link>
                             </li>
                         )

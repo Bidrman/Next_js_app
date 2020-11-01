@@ -6,18 +6,19 @@ import Layout from '../src/components/layout/Layout'
 import Header from '../src/components/header'
 import NewsContainer from '../src/features/news'
 
-const NewsPage = () => {
+const GifsPage = () => {
     return (
         <Layout>
             <Head>
-                <title>News</title>
+                <title>Gifs</title>
             </Head>
             <Container>
                 <Header />
-                <h1>News</h1>
+                <h1>Gifs</h1>
+                <NewsContainer />
             </Container>
         </Layout>
     )
 }
 
-export default NewsPage
+export default GifsPage

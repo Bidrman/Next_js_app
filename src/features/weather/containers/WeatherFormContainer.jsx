@@ -1,37 +1,39 @@
 import React, { useState, useEffect, useCallback } from 'react'
-//import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 //import useForm from '../hooks/useForm'
 //import * as types from '../../../../redux/types'
+import { addCity, deleteCities } from '../../../../redux/actions/weatherActions'
 
 import useManageCities from '../hooks/useManageCities'
+import useLocalStorage from '../hooks/useLocalStorage'
 import WeatherForm from '../components/WeatherForm'
 
 const WeatherFormContainer = () => {
-    //const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const [isSearching, setSearching] = useState(false)
     const [city, setCityName] = useState('')
+    const [storesCities, setStoredCities] = useLocalStorage([])
     const [cities, setCities] = useManageCities([])
 
     //const cityName = useSelector((state) => state.weather.cityName)
-    //const addCity = dispatch({ type: types.ADD_CITY })
+    // useEffect(() => {}, [])
 
     const searchCity = useCallback(async () => {
         if (isSearching) return
         // zamezeni volani kdyz probiha fetch
         setSearching(true)
-        console.log('searching je ', isSearching)
 
         try {
-            // const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
-
-            const fakeData = {
-                city: 'Oklahoma',
-                weather: 'Ma byt krasne',
-            }
-
-            setCities(fakeData)
-            console.log('RR', typeof cities, cities)
+            const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
+            const response = await fetch(url)
+            const cityData = await response.json()
+            console.log('json', cityData)
+            dispatch(addCity(cityData))
+            setCityName('')
+            // zbytecne duplicitni, ale pro zkousku zda funguje
+            setCities(cityData)
+            setStoredCities(cities)
 
             setSearching(false)
         } catch (error) {
@@ -39,18 +41,10 @@ const WeatherFormContainer = () => {
         }
     }, [city])
 
-    const deleteCities = () => {}
+    console.log('RR', storesCities, city)
 
-    const display = () => {
-        cities.map((city) => {
-            console.log('CC', city)
-            return (
-                <div>
-                    <h3>{city.name}</h3>
-                    <p>{city.weather}</p>
-                </div>
-            )
-        })
+    const deleteList = () => {
+        dispatch(deleteCities())
     }
 
     return (
@@ -60,8 +54,7 @@ const WeatherFormContainer = () => {
                 setCityName(e.target.value)
             }}
             searchForecast={searchCity}
-            deleteList={deleteCities}
-            display={display}
+            deleteList={deleteList}
         />
     )
 }

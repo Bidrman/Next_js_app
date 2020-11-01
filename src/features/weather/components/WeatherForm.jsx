@@ -2,11 +2,8 @@ import React from 'react'
 import { Button } from 'reactstrap'
 
 const WeatherForm = ({ cityName, setCity, searchForecast, deleteList, display }) => {
-    console.log('prislo', cityName, setCity)
-
     return (
         <div>
-            <h3>Zadejte jmeno mesta</h3>
             <input
                 type='text'
                 value={cityName}

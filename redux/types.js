@@ -9,9 +9,10 @@ export const LOGOUT = 'LOGOUT'
 //News
 
 // Weather
-export const SET_CITY = 'SET_CITY'
 export const ADD_CITY = 'ADD_CITY'
 export const REMOVE_CITY = 'REMOVE_CITY'
+export const DELETE_CITIES = 'DELETE_CITIES'
+export const UPDATE_CITIES = 'UPDATE_CITIES'
 
 // Fetch
 export const FETCH_START = 'FETCH_START'
