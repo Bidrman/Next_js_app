@@ -11,15 +11,20 @@ import WeatherForm from '../components/WeatherForm'
 
 const WeatherFormContainer = () => {
     const dispatch = useDispatch()
+    const reduxCities = useSelector((state) => state.weather.cities)
+
     const [isSearching, setSearching] = useState(false)
     const [city, setCityName] = useState('')
-    const [storesCities, setStoredCities] = useLocalStorage([])
+    const [storedCities, setStoredCities] = useLocalStorage('cities', reduxCities)
     const [cities, setCities] = useManageCities([])
 
-    //const cityName = useSelector((state) => state.weather.cityName)
-    // useEffect(() => {}, [])
+    console.log('reduxSTORE', reduxCities)
 
-    const searchCity = useCallback(async () => {
+    // useEffect(() => {
+    //     const data = localStorage
+    // }, [])
+
+    const searchCity = async () => {
         if (isSearching) return
         // zamezeni volani kdyz probiha fetch
         setSearching(true)
@@ -31,6 +36,7 @@ const WeatherFormContainer = () => {
             console.log('json', cityData)
             dispatch(addCity(cityData))
             setCityName('')
+
             // zbytecne duplicitni, ale pro zkousku zda funguje
             setCities(cityData)
             setStoredCities(cities)
@@ -39,9 +45,9 @@ const WeatherFormContainer = () => {
         } catch (error) {
             alert(error)
         }
-    }, [city])
+    }
 
-    console.log('RR', storesCities, city)
+    console.log('RR', storedCities, city)
 
     const deleteList = () => {
         dispatch(deleteCities())

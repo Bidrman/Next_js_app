@@ -4,7 +4,7 @@ const useLocalStorage = (key, initialValue) => {
     const [storedValue, setStoredValue] = useState(() => {
         try {
             const storedItem = window.localStorage.getItem(key)
-            const loadedItem = item ? JSON.parse(storedItem) : initialValue
+            const loadedItem = storedItem ? JSON.parse(storedItem) : initialValue
 
             return loadedItem
         } catch (error) {
@@ -15,9 +15,11 @@ const useLocalStorage = (key, initialValue) => {
 
     const setValue = (value) => {
         try {
+            console.log('useLocalHook', value instanceof Function)
             const valueToStore = value instanceof Function ? value(storedValue) : value
+            console.log('valueStore!!', valueToStore)
             setStoredValue(valueToStore)
-            window.localStorage.setItem(key, value)
+            window.localStorage.setItem(key, JSON.stringify(valueToStore))
         } catch (error) {
             console.log(error)
         }

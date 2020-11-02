@@ -1,4 +1,8 @@
 import * as types from '../types'
+import { loadLocalStorage } from '../../src/utils/localStorage'
+
+// SSR to zabiji, musi se pres hooky
+// const preloadedCities = loadLocalStorage('cities')
 
 const initialState = {
     isFetching: false,
