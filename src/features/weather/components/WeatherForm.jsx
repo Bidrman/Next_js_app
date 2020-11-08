@@ -15,7 +15,7 @@ const WeatherForm = ({ cityName, setCity, searchForecast, deleteList, display })
                         className={'w-100'}
                     />
                 </div>
-                <div>
+                <div className={'mb-3'}>
                     <Button color={'warning'} className={'font-bold search'} onClick={searchForecast}>
                         Zjistit, jak bude
                     </Button>

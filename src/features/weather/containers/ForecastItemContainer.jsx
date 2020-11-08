@@ -21,7 +21,7 @@ const ForecastItemContainer = ({ date, forecast, city }) => {
                         <span className={'mx-auto'}>
                             {item.weather[0].description === 'jasno' ? <Jasno width='60' height='60' /> : ''}
                             {item.weather[0].description === 'polojasno' ? (
-                                <PoloJasno width='60' height='60' />
+                                <SkoroJasno width='60' height='60' />
                             ) : (
                                 ''
                             )}
@@ -31,6 +31,11 @@ const ForecastItemContainer = ({ date, forecast, city }) => {
                                 ''
                             )}
                             {item.weather[0].description === 'oblačno' ? (
+                                <PoloJasno width='60' height='60' />
+                            ) : (
+                                ''
+                            )}
+                            {item.weather[0].description === 'zataženo' ? (
                                 <Oblacno width='60' height='60' />
                             ) : (
                                 ''
