@@ -46,7 +46,7 @@ const Navigation = ({ type }) => {
                         return (
                             <li key={index} className={'nav-item mx-3'}>
                                 <Link href={item.url}>
-                                    <a className={'font-17'}>{item.label}</a>
+                                    <a className={'font-18'}>{item.label}</a>
                                 </Link>
                             </li>
                         )

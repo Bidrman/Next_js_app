@@ -7,6 +7,9 @@ export const LOGIN = 'LOGIN'
 export const LOGOUT = 'LOGOUT'
 
 //News
+export const ADD_NEWS = 'ADD_NEWS'
+export const REMOVE_NEWS = 'REMOVE_NEWS'
+export const UPDATE_NEWS = 'UPDATE_NEWS'
 
 // Weather
 export const ADD_CITY = 'ADD_CITY'

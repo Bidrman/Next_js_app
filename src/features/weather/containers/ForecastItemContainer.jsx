@@ -2,6 +2,10 @@ import React from 'react'
 import { Card, CardTitle, CardText } from 'reactstrap'
 
 import ForecastItem from '../components/ForecastItem'
+import Jasno from '../../../components/icons/jasno'
+import PoloJasno from '../../../components/icons/polojasno'
+import SkoroJasno from '../../../components/icons/skorojasno'
+import Oblacno from '../../../components/icons/oblacno'
 import styles from '../styles/Forecast.module.scss'
 
 const ForecastItemContainer = ({ date, forecast, city }) => {
@@ -14,7 +18,24 @@ const ForecastItemContainer = ({ date, forecast, city }) => {
                 <Card className={`${styles.card} d-flex py-3 px-3 mx-3`}>
                     <CardTitle className={'d-flex flex-column'}>
                         <span className={'font-17'}>{time}</span>
-                        <span className={'mx-auto'}>IKONA</span>
+                        <span className={'mx-auto'}>
+                            {item.weather[0].description === 'jasno' ? <Jasno width='60' height='60' /> : ''}
+                            {item.weather[0].description === 'polojasno' ? (
+                                <PoloJasno width='60' height='60' />
+                            ) : (
+                                ''
+                            )}
+                            {item.weather[0].description === 'skoro jasno' ? (
+                                <SkoroJasno width='60' height='60' />
+                            ) : (
+                                ''
+                            )}
+                            {item.weather[0].description === 'oblačno' ? (
+                                <Oblacno width='60' height='60' />
+                            ) : (
+                                ''
+                            )}
+                        </span>
                         <span className={'mx-auto'}>{item.weather[0].description}</span>
                     </CardTitle>
                     <CardText className={'d-flex flex-column'}>

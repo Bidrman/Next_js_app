@@ -10,11 +10,11 @@ const WeatherPage = () => {
     return (
         <Layout>
             <Head>
-                <title>Weather forecast</title>
+                <title>Předpověď počasí</title>
             </Head>
             <Container>
                 <Header />
-                <h1>Weather</h1>
+                <h1 className={'text-center mb-3'}>Předpověď počasír</h1>
                 <WeatherContainer />
             </Container>
         </Layout>

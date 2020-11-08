@@ -1,10 +1,5 @@
 @import '~bootstrap/scss/functions';
 
-//backgrounds
-$green: #9c3;
-$white: #ffffff;
-$black: #000000;
-
 //fonts
 $grey: #41454b;
 
@@ -13,13 +8,14 @@ $blue: #297ad1 !default;
 $indigo: #2d0eb8 !default;
 $purple: #6f42c1 !default;
 $pink: #e63b8a !default;
-$red: #e91638 !default;
-$red2: #f52837 !default;
-$orange: #e74c1d !default;
-$yellow: #f3e848 !default;
+$red: #d30010 !default;
+$orange: #f29614 !default;
+$yellow: #ffe42f !default;
 $green: #9c3 !default;
 $blackSqueeze: #dadcdd !default;
 $blueGray: #627486 !default;
+$black: #000000 !default;
+$white: #ffffff !default;
 
 $colors: () !default;
 $colors: map-merge(
@@ -41,10 +37,10 @@ $colors: map-merge(
 );
 
 // urcit barevnostni paletu
-$primary: $orange !default;
-$secondary: #7f3037 !default;
+$primary: $blue !default;
+$secondary: $blueGray !default;
 $success: $green !default;
-$info: $purple !default;
+$info: $blackSqueeze !default;
 $warning: $yellow !default;
 $danger: $red !default;
 $light: $blackSqueeze !default;

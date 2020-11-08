@@ -14,7 +14,8 @@ const NewsPage = () => {
             </Head>
             <Container>
                 <Header />
-                <h1>News</h1>
+                <h1 className={'text-center mb-3'}>Zpravodajství</h1>
+                <NewsContainer />
             </Container>
         </Layout>
     )

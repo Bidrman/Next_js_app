@@ -6,8 +6,6 @@ import ForecastItemContainer from './ForecastItemContainer'
 
 const ForecastListContainer = () => {
     const storedCities = useSelector((state) => state.weather.cities)
-
-    console.log('storedCities', typeof storedCities, storedCities)
     const displayedItems = storedCities.map((city) => {
         return (
             <ForecastItemContainer

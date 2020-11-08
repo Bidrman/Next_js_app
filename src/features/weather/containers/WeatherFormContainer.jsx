@@ -15,14 +15,13 @@ const WeatherFormContainer = () => {
 
     const [isSearching, setSearching] = useState(false)
     const [city, setCityName] = useState('')
-    const [storedCities, setStoredCities] = useLocalStorage('cities', reduxCities)
-    const [cities, setCities] = useManageCities([])
+    const [storedCities, setStoredCities] = useLocalStorage('cities')
+    const [cities, setCities] = useManageCities(storedCities)
 
-    console.log('reduxSTORE', reduxCities)
-
-    // useEffect(() => {
-    //     const data = localStorage
-    // }, [])
+    useEffect(() => {
+        if (cities.length <= 0) return
+        setStoredCities(cities)
+    }, [cities])
 
     const searchCity = async () => {
         if (isSearching) return
@@ -33,13 +32,12 @@ const WeatherFormContainer = () => {
             const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
             const response = await fetch(url)
             const cityData = await response.json()
-            console.log('json', cityData)
+
             dispatch(addCity(cityData))
             setCityName('')
 
             // zbytecne duplicitni, ale pro zkousku zda funguje
             setCities(cityData)
-            setStoredCities(cities)
 
             setSearching(false)
         } catch (error) {
@@ -47,10 +45,9 @@ const WeatherFormContainer = () => {
         }
     }
 
-    console.log('RR', storedCities, city)
-
     const deleteList = () => {
         dispatch(deleteCities())
+        window.localStorage.clear()
     }
 
     return (
