@@ -45,7 +45,7 @@ const ForecastItemContainer = ({ date, forecast, city }) => {
                     </CardTitle>
                     <CardText className={'d-flex flex-column'}>
                         <span className={'font-bold font-22 p-1 mx-auto mb-1 border-bottom'}>
-                            {item.main.temp.toFixed(1)} °C
+                            {item.main.temp.toFixed(1)}&nbsp;°C
                         </span>
                         <span>pocitově: {item.main.feels_like.toFixed(1)} °C</span>
                         <span>vlhkost: {item.main.humidity} %</span>

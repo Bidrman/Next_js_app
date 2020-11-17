@@ -6,10 +6,10 @@ const useManageCities = (initialValues) => {
     return [
         cities,
         (data) => {
-            console.log('data'.data)
             setCities([
                 ...cities,
                 {
+                    id: data.city.id,
                     name: data.city.name,
                     date: new Date(),
                     forecast: data.list.filter((litItem, index) => index <= 3),

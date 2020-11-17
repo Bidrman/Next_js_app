@@ -11,15 +11,13 @@ const NewsFormContainer = ({ countries }) => {
     const [isSending, setSending] = useState(false)
     const [country, setCountry] = useState('')
 
-    useEffect(() => {
-        console.log('News Country', country)
-    }, [country])
+    // useEffect(() => {
+    // }, [country])
 
     const findNews = async () => {
         if (isSending) return
 
         setSending(true)
-        console.log('Sending ', isSending)
         try {
             if (!country) {
                 alert('nejprve vyberte zemi stát, kliknutím na tlačátko s názvem státu')
@@ -29,9 +27,7 @@ const NewsFormContainer = ({ countries }) => {
             const url = `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=84a36c3765424acdb09e74a81ae2ccec`
 
             const response = await fetch(url)
-            console.log('response', response)
             const json = await response.json()
-            console.log('JSON', json)
 
             dispatch(addNews(json.articles))
             setSending(false)

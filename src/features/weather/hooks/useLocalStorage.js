@@ -12,7 +12,6 @@ const useLocalStorage = (key) => {
             const storedItem = window.localStorage.getItem(key)
 
             if (storedItem === null || storedItem === []) return
-
             dispatch(updateCities(JSON.parse(storedItem)))
         } catch (error) {
             console.warn('Error pri nacitani localStorage dat: ', error)
@@ -20,28 +19,37 @@ const useLocalStorage = (key) => {
     }
 
     const addValue = (value) => {
-        console.log('VALUE do AddValue', value)
-        try {
-            dispatch(updateCities(value))
+        // const cities = [...reduxCities, value]
+        const filteredCities = value.filter(
+            (city, index, array) => index === array.findIndex((t) => t.name === city.name && t.id === city.id)
+        )
 
-            window.localStorage.setItem(key, JSON.stringify(value))
+        try {
+            // pojistka proti duplicite
+            if (filteredCities.length >= 1) {
+                dispatch(updateCities(filteredCities))
+                window.localStorage.setItem(key, JSON.stringify(filteredCities))
+            } else {
+                dispatch(updateCities(value))
+                window.localStorage.setItem(key, JSON.stringify(reduxCities))
+            }
         } catch (error) {
             console.log(error)
         }
     }
 
-    // vymyslet lepsi zpusob ukladani
     // const addValue = (value) => {
     //     console.log('VALUE do AddValue', value)
     //     try {
-    //         const cities = [...reduxCities, value]
-    //         dispatch(updateCities(cities))
+    //         dispatch(updateCities(value))
 
-    //         window.localStorage.setItem(key, JSON.stringify(cities))
+    //         window.localStorage.setItem(key, JSON.stringify(value))
     //     } catch (error) {
     //         console.log(error)
     //     }
     // }
+
+    // vymyslet lepsi zpusob ukladani
 
     useEffect(() => {
         getValue()

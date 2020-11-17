@@ -19,7 +19,7 @@ const WeatherFormContainer = () => {
     const [cities, setCities] = useManageCities(storedCities)
 
     useEffect(() => {
-        if (cities.length <= 0) return
+        if (cities.length == 0) return
         setStoredCities(cities)
     }, [cities])
 
@@ -32,7 +32,6 @@ const WeatherFormContainer = () => {
             const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
             const response = await fetch(url)
             const cityData = await response.json()
-
             dispatch(addCity(cityData))
             setCityName('')
 

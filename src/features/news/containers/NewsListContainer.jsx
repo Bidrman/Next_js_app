@@ -17,7 +17,6 @@ const NewsListContainer = () => {
     const filteredNews = reduxNews.filter((article, index) => index <= numberOfNews)
     const listOfNews = filteredNews.map((article) => {
         const title = article.title.match(/^(.*)( - )/)[1]
-        console.log('ARTIKL', article)
 
         return (
             <li className={'mb-4'}>

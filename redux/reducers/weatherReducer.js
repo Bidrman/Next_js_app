@@ -17,6 +17,7 @@ const weatherReducer = (state = initialState, action) => {
                 cities: [
                     ...state.cities,
                     {
+                        id: action.payload.city.id,
                         name: action.payload.city.name,
                         date: new Date(),
                         forecast: action.payload.list.filter((litItem, index) => index <= 3),
