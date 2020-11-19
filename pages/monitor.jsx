@@ -4,7 +4,7 @@ import { Container } from 'reactstrap'
 
 import Layout from '../src/components/layout/Layout'
 import Header from '../src/components/header'
-import NewsContainer from '../src/features/news'
+import CryptoMonitorContainer from '../src/features/crypto'
 
 const MonitorPage = () => {
     return (
@@ -15,7 +15,7 @@ const MonitorPage = () => {
             <Container>
                 <Header />
                 <h1>Crypto Monitor</h1>
-                coming soon...
+                <CryptoMonitorContainer />
             </Container>
         </Layout>
     )
