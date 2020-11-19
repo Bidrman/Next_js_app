@@ -16,8 +16,8 @@ const menuItems = [
         url: '/news',
     },
     {
-        label: 'Gif search',
-        url: '/gifs',
+        label: 'Crypto Monitor',
+        url: '/monitor',
     },
     // {
     //     label: 'Login',
