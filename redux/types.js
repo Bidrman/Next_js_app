@@ -21,3 +21,9 @@ export const UPDATE_CITIES = 'UPDATE_CITIES'
 export const FETCH_START = 'FETCH_START'
 export const FETCH_SUCCESS = 'FETCH_SUCCESS'
 export const FETCH_FAIL = 'FETCH_FAIL'
+
+// TEST
+export const TEST = 'TEST_IT'
+export const HELLO = 'HELLO'
+
+// Crypto

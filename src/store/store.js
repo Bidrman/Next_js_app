@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
-import { rootSaga } from '../saga/rootSaga'
+import { watchSaga } from '../sagas/rootSaga'
 import createReducer from '../reducers/combineReducers'
 
 const sagaMiddleware = createSagaMiddleware()
@@ -14,6 +14,8 @@ const store = createStore(
     )
 )
 
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(watchSaga)
+
+const action = (type) => store.dispatch({ type })
 
 export default store
