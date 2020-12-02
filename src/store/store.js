@@ -1,21 +1,23 @@
-import { createStore, compose, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
+// import { createStore, compose, applyMiddleware } from 'redux'
+// import createSagaMiddleware from 'redux-saga'
 
-import { watchSaga } from '../sagas/rootSaga'
-import createReducer from '../reducers/combineReducers'
+// import { watchSaga } from '../sagas/rootSaga'
+// import createReducer from '../reducers/combineReducers'
 
-const sagaMiddleware = createSagaMiddleware()
+// // Kvuli nextu se (SSR) se pou69v8 store v _app.js   !!!!!
 
-const store = createStore(
-    createReducer(),
-    compose(
-        applyMiddleware(sagaMiddleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    )
-)
+// const sagaMiddleware = createSagaMiddleware()
 
-sagaMiddleware.run(watchSaga)
+// const store = createStore(
+//     createReducer(),
+//     compose(
+//         applyMiddleware(sagaMiddleware),
+//         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//     )
+// )
 
-const action = (type) => store.dispatch({ type })
+// sagaMiddleware.run(watchSaga)
 
-export default store
+// const action = (type) => store.dispatch({ type })
+
+// export default store

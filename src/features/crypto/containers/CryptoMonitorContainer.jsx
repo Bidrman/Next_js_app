@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import * as types from '../../../../redux/types'
-import { runHello } from '../../../../redux/actions/cryptoActions'
+import { runHello, runDecrease, runIncrease } from '../../../../redux/actions/cryptoActions'
 
 const CryptoMonitorContainer = () => {
     const dispatch = useDispatch()
@@ -15,9 +15,11 @@ const CryptoMonitorContainer = () => {
 
     const increaseMagic = (currentLevel) => {
         setMagicLevel((currentLevel) => currentLevel + 1)
+        dispatch(runIncrease())
     }
     const decreaseMagic = (currentLevel) => {
         setMagicLevel((currentLevel) => currentLevel - 1)
+        dispatch(runDecrease())
     }
 
     return (

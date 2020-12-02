@@ -1,4 +1,4 @@
-import { HELLO } from '../types'
+import { HELLO, INCREASE, DECREASE } from '../types'
 
 // export const runTest = () => ({
 //     type: types.TEST,
@@ -7,4 +7,12 @@ import { HELLO } from '../types'
 export const runHello = (value) => ({
     type: HELLO,
     payload: value,
+})
+
+export const runIncrease = () => ({
+    type: INCREASE,
+})
+
+export const runDecrease = () => ({
+    type: DECREASE,
 })
