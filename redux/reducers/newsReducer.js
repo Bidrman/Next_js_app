@@ -25,7 +25,7 @@ const newsReducer = (state = initialState, action) => {
                 ...state,
                 cities: action.payload,
             }
-        case types.FETCH_START:
+        case types.FETCH_REQUEST:
             return {
                 ...state,
                 isFetching: true,

@@ -23,14 +23,15 @@ export const deleteCities = () => ({
     type: types.DELETE_CITIES,
 })
 
-export const fetchStart = () => ({
-    type: types.FETCH_START,
+export const fetchStart = (url) => ({
+    type: types.WEATHER_FETCH_REQUEST,
+    payload: url,
 })
 
 export const fetchSuccess = () => ({
-    type: types.FETCH_SUCCESS,
+    type: types.WEATHER_FETCH_SUCCESS,
 })
 
 export const fetchFail = () => ({
-    type: types.FETCH_FAIL,
+    type: types.WEATHER_FETCH_FAIL,
 })

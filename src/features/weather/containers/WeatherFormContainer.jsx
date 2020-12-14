@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 //import useForm from '../hooks/useForm'
 //import * as types from '../../../../redux/types'
-import { addCity, deleteCities } from '../../../../redux/actions/weatherActions'
+import fetchJsonData from '../../../sideEffects/fetch/fetchData'
+import { addCity, deleteCities, fetchStart } from '../../../../redux/actions/weatherActions'
 
 import useManageCities from '../hooks/useManageCities'
 import useLocalStorage from '../hooks/useLocalStorage'
@@ -28,20 +29,28 @@ const WeatherFormContainer = () => {
         // zamezeni volani kdyz probiha fetch
         setSearching(true)
 
-        try {
-            const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
-            const response = await fetch(url)
-            const cityData = await response.json()
-            dispatch(addCity(cityData))
-            setCityName('')
+        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
 
-            // zbytecne duplicitni, ale pro zkousku zda funguje
-            setCities(cityData)
+        dispatch(fetchStart(url))
+        setCityName('')
 
-            setSearching(false)
-        } catch (error) {
-            alert(error)
-        }
+        // volat watchera
+        setSearching(false)
+
+        // try {
+        //     const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
+        //     const response = await fetch(url)
+        //     const cityData = await response.json()
+        //     dispatch(addCity(cityData))
+        //     setCityName('')
+
+        //     // zbytecne duplicitni, ale pro zkousku zda funguje
+        //     setCities(cityData)
+
+        //     setSearching(false)
+        // } catch (error) {
+        //     alert(error)
+        // }
     }
 
     const deleteList = () => {

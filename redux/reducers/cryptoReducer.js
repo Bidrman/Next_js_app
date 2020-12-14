@@ -4,14 +4,21 @@ const initialState = {
     isFetching: false,
     coins: null,
     message: '',
+    fetchUrl: null,
+    fetchedData: null,
 }
 
 const weatherReducer = (state = initialState, action) => {
     switch (action.type) {
-        case types.HELLO:
+        case types.SET_URL:
             return {
                 ...state,
-                message: action.payload,
+                fetchUrl: action.payload,
+            }
+        case types.FETCHED_DATA:
+            return {
+                ...state,
+                fetchedData: action.payload,
             }
         default:
             return state
