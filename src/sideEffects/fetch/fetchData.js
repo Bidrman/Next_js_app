@@ -1,4 +1,4 @@
-const fetchJsonData = async (url) => {
+export const fetchJsonData = async (url) => {
     try {
         const response = await fetch(url)
         const data = await response.json()
@@ -7,8 +7,4 @@ const fetchJsonData = async (url) => {
     } catch (error) {
         console.log(`Nastala chyba pri fetchi dat: ${error}`)
     }
-}
-
-export default {
-    fetchJsonData,
 }

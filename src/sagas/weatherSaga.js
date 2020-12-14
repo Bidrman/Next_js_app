@@ -1,6 +1,6 @@
 import { put, takeLatest, takeEvery } from 'redux-saga/effects'
 
-import fetchJsonData from '../sideEffects/fetch/fetchData'
+import { fetchJsonData } from '../sideEffects/fetch/fetchData'
 import * as types from '../../redux/types'
 import { addCity, fetchFail } from '../../redux/actions/weatherActions'
 

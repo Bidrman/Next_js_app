@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import * as types from '../../../../redux/types'
-import fetchJsonData from '../../../sideEffects/fetch/fetchData'
+
 import {
     runHello,
     runDecrease,
@@ -13,7 +13,7 @@ import {
 
 const CryptoMonitorContainer = () => {
     const dispatch = useDispatch()
-    // const reduxFetchUrl = useSelector((state) => state.crypto.fetchUrl)
+    const reduxFetchUrl = useSelector((state) => state.crypto.fetchUrl)
     const fetchedUser = useSelector((state) => state.crypto.fetchedData)
     const [numberOfUsers, setNumbefOfUsers] = useState(0)
 
@@ -37,7 +37,7 @@ const CryptoMonitorContainer = () => {
     }
 
     const fetchData = () => {
-        dispatch(fetchRequest())
+        dispatch(fetchRequest(reduxFetchUrl))
     }
 
     // const getData = async (userNum) => {
@@ -51,15 +51,15 @@ const CryptoMonitorContainer = () => {
 
     return (
         <div>
-            <h3>Number of users in query: {numberOfUsers}</h3>
+            <h3>User's id in query: {numberOfUsers}</h3>
             <br />
             <br />
             <div>
-                <button onClick={() => increaseNumber(numberOfUsers)}>+ increase number of users</button>
+                <button onClick={() => increaseNumber(numberOfUsers)}>+ increase id number</button>
             </div>
             <br />
             <div>
-                <button onClick={() => decreaseNumber(numberOfUsers)}>- decrease number of users</button>
+                <button onClick={() => decreaseNumber(numberOfUsers)}>- decrease id number</button>
             </div>
             <div className={'mt-4'}>
                 <button onClick={() => fetchData()}>fetch DATA</button>

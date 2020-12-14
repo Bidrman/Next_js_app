@@ -9,13 +9,14 @@ export const setUrl = (url) => ({
     payload: url,
 })
 
-export const fetchedData = (url) => ({
+export const fetchedData = (data) => ({
     type: FETCHED_DATA,
-    payload: url,
+    payload: data,
 })
 
-export const fetchRequest = () => ({
+export const fetchRequest = (url) => ({
     type: CRYPTO_FETCH_REQUEST,
+    payload: url,
 })
 
 export const runHello = (value) => ({
