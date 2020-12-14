@@ -66,7 +66,7 @@ const CryptoMonitorContainer = () => {
             </div>
             {fetchedUser && (
                 <div className={'mt-4'}>
-                    <pre>fetchedUser</pre>
+                    <pre>{JSON.stringify(fetchedUser)}</pre>
                 </div>
             )}
         </div>

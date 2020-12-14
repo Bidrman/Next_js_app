@@ -12,7 +12,8 @@ function* cryptoFetchData(action) {
     const IncomingData = yield call(fetchJsonData, action.payload)
     console.log('data', typeof fetchedData, fetchedData)
 
-    yield put(fetchedData, IncomingData)
+    const dispatchFetch = fetchedData(IncomingData)
+    yield put(dispatchFetch)
 }
 
 export default function* cryptoRootSaga() {
