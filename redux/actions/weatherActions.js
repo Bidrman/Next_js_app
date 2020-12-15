@@ -23,7 +23,12 @@ export const deleteCities = () => ({
     type: types.DELETE_CITIES,
 })
 
-export const fetchStart = (url) => ({
+export const setUrl = (url) => ({
+    type: types.WEATHER_SET_URL,
+    payload: url,
+})
+
+export const fetchRequest = (url) => ({
     type: types.WEATHER_FETCH_REQUEST,
     payload: url,
 })

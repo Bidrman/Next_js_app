@@ -14,7 +14,7 @@ const WeatherPage = () => {
             </Head>
             <Container>
                 <Header />
-                <h1 className={'text-center mb-3'}>Předpověď počasír</h1>
+                <h1 className={'text-center mb-3'}>Předpověď počasí</h1>
                 <WeatherContainer />
             </Container>
         </Layout>

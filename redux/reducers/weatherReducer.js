@@ -6,6 +6,7 @@ import { loadLocalStorage } from '../../src/utils/localStorage'
 
 const initialState = {
     isFetching: false,
+    fetchUrl: null,
     cities: [],
 }
 
@@ -37,6 +38,11 @@ const weatherReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cities: action.payload,
+            }
+        case types.WEATHER_SET_URL:
+            return {
+                ...state,
+                fetchUrl: action.payload,
             }
         case types.FETCH_REQUEST:
             return {

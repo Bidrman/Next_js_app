@@ -14,8 +14,9 @@ export const removeNews = () => ({
     type: types.REMOVE_NEWS,
 })
 
-export const fetchStart = () => ({
-    type: types.FETCH_START,
+export const fetchRequest = (url) => ({
+    type: types.FETCH_REQUEST,
+    payload: url,
 })
 
 export const fetchSuccess = () => ({

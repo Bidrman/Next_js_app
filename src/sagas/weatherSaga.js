@@ -1,26 +1,24 @@
-import { put, takeLatest, takeEvery } from 'redux-saga/effects'
+import { put, fork, takeLatest, takeEvery, call } from 'redux-saga/effects'
 
 import { fetchJsonData } from '../sideEffects/fetch/fetchData'
 import * as types from '../../redux/types'
-import { addCity, fetchFail } from '../../redux/actions/weatherActions'
+import { addCity } from '../../redux/actions/weatherActions'
 
-function* watchAddCity(url) {
-    console.log('URL', url)
-    yield takeEvery(types.WEATHER_FETCH_REQUEST, fetchCity, action.payload)
+function* watchWeatherSaga() {
+    yield takeLatest(types.WEATHER_FETCH_REQUEST, weatherFetchData)
 }
 
-function* fetchCity(url) {
+function* weatherFetchData(action) {
     try {
-        const cityData = fetchJsonData(url)
+        const weatherData = yield call(fetchJsonData, action.payload)
 
-        yield put(addCity(cityData))
+        const storeCityData = addCity(weatherData)
+        yield put(storeCityData)
     } catch (error) {
-        console.log('chyba behem fetche ' + error)
-
-        yield put(fetchFail())
+        console.log(`weatherFetchData nemohly dokncit proces kvuli chybe: ${error}`)
     }
 }
 
-export default {
-    watchAddCity,
+export default function* weatherRootSaga() {
+    yield fork(watchWeatherSaga)
 }

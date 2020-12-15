@@ -66,7 +66,7 @@ $theme-colors: map-merge($theme-colors, $colors);
 $grid-breakpoints: (
     xs: 0,
     sm: 576px,
-    md: 768px,
+    md: 780px,
     lg: 980px,
     xl: 1199px,
 ) !default;
@@ -79,8 +79,8 @@ $grid-breakpoints: (
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-    sm: 540px,
-    md: 760px,
+    sm: 580px,
+    md: 800px,
     lg: 980px,
     xl: 1232px,
 ) !default;

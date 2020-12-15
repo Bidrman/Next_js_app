@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 //import useForm from '../hooks/useForm'
 //import * as types from '../../../../redux/types'
 import fetchJsonData from '../../../sideEffects/fetch/fetchData'
-import { addCity, deleteCities, fetchStart } from '../../../../redux/actions/weatherActions'
+import { setUrl, addCity, deleteCities, fetchRequest } from '../../../../redux/actions/weatherActions'
 
 import useManageCities from '../hooks/useManageCities'
 import useLocalStorage from '../hooks/useLocalStorage'
@@ -13,44 +13,26 @@ import WeatherForm from '../components/WeatherForm'
 const WeatherFormContainer = () => {
     const dispatch = useDispatch()
     const reduxCities = useSelector((state) => state.weather.cities)
-
+    const fetchUrl = useSelector((state) => state.weather.fetchUrl)
     const [isSearching, setSearching] = useState(false)
     const [city, setCityName] = useState('')
     const [storedCities, setStoredCities] = useLocalStorage('cities')
     const [cities, setCities] = useManageCities(storedCities)
 
     useEffect(() => {
+        createFetchUrl(city)
         if (cities.length == 0) return
         setStoredCities(cities)
-    }, [cities])
+    }, [city, cities])
 
-    const searchCity = async () => {
-        if (isSearching) return
-        // zamezeni volani kdyz probiha fetch
-        setSearching(true)
+    const createFetchUrl = (cityName) => {
+        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
 
-        const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
+        dispatch(setUrl(url))
+    }
 
-        dispatch(fetchStart(url))
-        setCityName('')
-
-        // volat watchera
-        setSearching(false)
-
-        // try {
-        //     const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&lang=cz&units=metric&appid=64128163cebd1a19281dea72993d1cd6`
-        //     const response = await fetch(url)
-        //     const cityData = await response.json()
-        //     dispatch(addCity(cityData))
-        //     setCityName('')
-
-        //     // zbytecne duplicitni, ale pro zkousku zda funguje
-        //     setCities(cityData)
-
-        //     setSearching(false)
-        // } catch (error) {
-        //     alert(error)
-        // }
+    const searchForecast = (url) => {
+        dispatch(fetchRequest(url))
     }
 
     const deleteList = () => {
@@ -64,7 +46,9 @@ const WeatherFormContainer = () => {
             setCity={(e) => {
                 setCityName(e.target.value)
             }}
-            searchForecast={searchCity}
+            searchForecast={() => {
+                searchForecast(fetchUrl)
+            }}
             deleteList={deleteList}
         />
     )

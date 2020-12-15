@@ -12,7 +12,7 @@ const NewsPage = () => {
             <Head>
                 <title>News</title>
             </Head>
-            <Container>
+            <Container className={'px-0'}>
                 <Header />
                 <h1 className={'text-center mb-3'}>Zpravodajství</h1>
                 <NewsContainer />

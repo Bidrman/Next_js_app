@@ -1,0 +1,14 @@
+.news {
+    & .buttons__wrapper {
+        max-width: 700px;
+        width: 90%;
+
+        @include media-breakpoint-up(md) {
+            width: 75%;
+        }
+
+        @include media-breakpoint-up(lg) {
+            widht: 60%;
+        }
+    }
+}

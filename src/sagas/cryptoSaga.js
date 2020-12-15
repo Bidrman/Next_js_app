@@ -10,10 +10,9 @@ function* watchCryptoSaga() {
 
 function* cryptoFetchData(action) {
     const IncomingData = yield call(fetchJsonData, action.payload)
-    console.log('data', typeof fetchedData, fetchedData)
 
-    const dispatchFetch = fetchedData(IncomingData)
-    yield put(dispatchFetch)
+    const storeFetchedData = fetchedData(IncomingData)
+    yield put(storeFetchedData)
 }
 
 export default function* cryptoRootSaga() {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button } from 'reactstrap'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { addNews, removeNews } from '../../../../redux/actions/newsActions'
+import { addNews, removeNews, fetchRequest } from '../../../../redux/actions/newsActions'
 import NewsForm from '../components/NewsForm'
 
 const NewsFormContainer = ({ countries }) => {
@@ -13,6 +13,12 @@ const NewsFormContainer = ({ countries }) => {
 
     // useEffect(() => {
     // }, [country])
+
+    const setUrl = (countryName) => {
+        const url = `https://newsapi.org/v2/top-headlines?country=${countryName}&apiKey=84a36c3765424acdb09e74a81ae2ccec`
+
+        return url
+    }
 
     const findNews = async () => {
         if (isSending) return

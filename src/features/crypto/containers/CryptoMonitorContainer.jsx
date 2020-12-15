@@ -40,15 +40,6 @@ const CryptoMonitorContainer = () => {
         dispatch(fetchRequest(reduxFetchUrl))
     }
 
-    // const getData = async (userNum) => {
-    //     const url = `https://jsonplaceholder.typicode.com/users/${userNum}`
-
-    //     const response = await fetch(url)
-    //     const data = await response.json()
-
-    //     return data
-    // }
-
     return (
         <div>
             <h3>User's id in query: {numberOfUsers}</h3>
@@ -65,8 +56,8 @@ const CryptoMonitorContainer = () => {
                 <button onClick={() => fetchData()}>fetch DATA</button>
             </div>
             {fetchedUser && (
-                <div className={'mt-4'}>
-                    <pre>{JSON.stringify(fetchedUser)}</pre>
+                <div className={'mt-4 text-left'}>
+                    <pre>{JSON.stringify(fetchedUser, null, 1)}</pre>
                 </div>
             )}
         </div>
