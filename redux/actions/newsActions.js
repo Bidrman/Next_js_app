@@ -15,14 +15,14 @@ export const removeNews = () => ({
 })
 
 export const fetchRequest = (url) => ({
-    type: types.FETCH_REQUEST,
+    type: types.NEWS_FETCH_REQUEST,
     payload: url,
 })
 
 export const fetchSuccess = () => ({
-    type: types.FETCH_SUCCESS,
+    type: types.NEWS_FETCH_SUCCESS,
 })
 
 export const fetchFail = () => ({
-    type: types.FETCH_FAIL,
+    type: types.NEWS_FETCH_FAIL,
 })

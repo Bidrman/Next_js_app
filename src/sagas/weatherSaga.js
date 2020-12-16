@@ -15,7 +15,7 @@ function* weatherFetchData(action) {
         const storeCityData = addCity(weatherData)
         yield put(storeCityData)
     } catch (error) {
-        console.log(`weatherFetchData nemohly dokncit proces kvuli chybe: ${error}`)
+        console.log(`weatherFetchData nemohly dokoncit proces kvuli chybe: ${error}`)
     }
 }
 

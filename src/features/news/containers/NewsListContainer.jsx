@@ -15,11 +15,11 @@ const NewsListContainer = () => {
     // }, [numberOfNews])
 
     const filteredNews = reduxNews.filter((article, index) => index <= numberOfNews)
-    const listOfNews = filteredNews.map((article) => {
+    const listOfNews = filteredNews.map((article, index) => {
         const title = article.title.match(/^(.*)( - )/)[1]
 
         return (
-            <li className={'mb-4'}>
+            <li className={'mb-4'} key={index}>
                 <Card className={`${styles.card} border-0`}>
                     <CardTitle>
                         <h4>{title}</h4>
