@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import '../src/styles/modules.scss' // Global styles
 import rootReducer from '../redux/reducers/rootReducer'
 import rootSaga from '../src/sagas/rootSaga'
+import { AuthProvider } from '../src/firebase/auth'
 
 //import store from '../src/store/store'
 
@@ -23,7 +24,9 @@ sagaMiddleware.run(rootSaga)
 const MyApp = ({ Component, pageProps }) => {
     return (
         <Provider store={store}>
-            <Component {...pageProps} />
+            <AuthProvider>
+                <Component {...pageProps} />
+            </AuthProvider>
         </Provider>
     )
 }

@@ -1,47 +1,56 @@
 import React, { useEffect, useState } from 'react'
-import { Button } from 'reactstrap'
+// import { Button } from 'reactstrap'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
 
-import { useForm } from '../hooks/useForm'
-import { useFetch } from '../hooks/useFetch'
+import { useStyles } from '../styles/styles'
 
-const Login = ({signIn}) => {
-    //useState
-    const [values, handleChange] = useForm({ email: '', password: '' })
+import styles from '../styles/login.module.scss'
 
-    const [count, setCount] = useState(0)
-    // TOHLE nejde kvuli nextu, protoze ma SSR, kde neni vydefinovany localStorage
-    // useEffect(() => {
-    //     localStorage.setItem('count', JSON.stringify(count))
-    // }, [count])
-
+const Login = ({ userId, setToken, values, handleChange }) => {
+    const classes = useStyles()
     //FETCH!!
-    const url = `http://numbersapi.com/${count}`
+    //  const url = `http://numbersapi.com/${count}`
 
-    const { data, loading } = useFetch(url)
+    // const { data, loading } = useFetch(url)
 
     return (
         <div>
-            {/* {<div>
-                <label>Mail</label>
-                <input name='email' value={values.email} onChange={handleChange} />
-            </div>
-
             <div>
-                <label>Password</label>
-                <input type='password' name='password' value={values.password} onChange={handleChange} />
-            </div>
-            <Button>Log in</Button>} */}
-
-            <Button onClick={() => signIn}>Login with Google</Button>
-
-
-            {/* <div> Count: {count}</div>
-            <div>
-                <Button onClick={() => setCount((c) => c + 1)}>Add Count</Button>
+                <span>
+                    user ID: <b className={` ${styles.id}`}>{userId}</b>
+                </span>
             </div>
             <div>
-                <h4>{loading ? 'loading...' : data}</h4>
-            </div> */}
+                <div>
+                    <TextField
+                        id='email'
+                        name='email'
+                        label='email'
+                        value={values.email}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div>
+                    <TextField
+                        id='password'
+                        name='password'
+                        label='password'
+                        value={values.password}
+                        onChange={handleChange}
+                    />
+                </div>
+            </div>
+            <div className={classes.root}>
+                <Button
+                    variant='contained'
+                    onClick={(e) => {
+                        setToken(e.target.className)
+                    }}
+                >
+                    Login
+                </Button>
+            </div>
         </div>
     )
 }
